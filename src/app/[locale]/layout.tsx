@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     title: "Optimrental - Car Rental & Shuttle",
     description: "Affordable rates • Top-notch service • Switzerland",
     icons: {
-        icon: '/optimrental-logo.png',
+        icon: [{ url: '/optimrental-logo.png', type: 'image/png' }],
+        shortcut: '/favicon.ico',
         apple: '/optimrental-logo.png',
-        shortcut: '/optimrental-logo.png'
     }
 };
 
@@ -45,7 +45,8 @@ export default async function LocaleLayout({
     return (
         <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
             <head>
-                <link rel="icon" href="/optimrental-logo.png" />
+                <link rel="icon" type="image/png" href="/optimrental-logo.png" />
+                <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
                 <link rel="apple-touch-icon" href="/optimrental-logo.png" />
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-slate-50 text-slate-900`} suppressHydrationWarning>
