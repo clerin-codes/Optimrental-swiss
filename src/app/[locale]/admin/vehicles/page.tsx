@@ -208,7 +208,7 @@ export default function AdminVehiclesPage() {
                                                 <input
                                                     type="checkbox"
                                                     id={`feature-${feature}`}
-                                                    checked={selectedFeatures.includes(feature) || (editingVehicle?.features?.includes(feature) && !selectedFeatures.length)}
+                                                    checked={!!(selectedFeatures.includes(feature) || (editingVehicle?.features?.includes(feature) && !selectedFeatures.length))}
                                                     onChange={(e) => {
                                                         if (e.target.checked) setSelectedFeatures([...selectedFeatures, feature]);
                                                         else setSelectedFeatures(selectedFeatures.filter(f => f !== feature));

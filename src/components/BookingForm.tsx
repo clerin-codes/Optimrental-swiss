@@ -95,35 +95,41 @@ export default function BookingForm({ vehicles, locale }: { vehicles: Vehicle[],
     return (
         <form onSubmit={handleSubmit} className="space-y-8">
             {/* Vehicle Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={(() => {
+                if (!vehicles) return 'grid gap-6';
+                if (vehicles.length === 1) return 'grid grid-cols-1 justify-items-center gap-6';
+                if (vehicles.length === 2) return 'grid grid-cols-1 md:grid-cols-2 justify-items-center gap-6';
+                return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+            })()}>
                 {vehicles.map((v) => (
-                    <div
-                        key={v.id}
-                        onClick={() => setSelectedVehicle(v)}
-                        className={cn(
-                            "cursor-pointer transition-all duration-300 rounded-3xl overflow-hidden border-2",
-                            selectedVehicle?.id === v.id ? "border-amber-500 ring-4 ring-amber-500/10" : "border-transparent bg-white shadow-md hover:shadow-xl"
-                        )}
-                    >
-                        <div className="h-40 bg-slate-100 relative">
-                            {v.image_url ? (
-                                <img src={v.image_url} alt={v.name} className="w-full h-full object-cover" />
-                            ) : (
-                                <div className="flex items-center justify-center h-full text-slate-400">
-                                    <Car className="w-12 h-12" />
-                                </div>
+                    <div key={v.id} className="w-full max-w-[380px]">
+                        <div
+                            onClick={() => setSelectedVehicle(v)}
+                            className={cn(
+                                "cursor-pointer transition-all duration-300 rounded-3xl overflow-hidden border-2",
+                                selectedVehicle?.id === v.id ? "border-amber-500 ring-4 ring-amber-500/10" : "border-transparent bg-white shadow-md hover:shadow-xl"
                             )}
-                            {selectedVehicle?.id === v.id && (
-                                <div className="absolute top-2 right-2 bg-amber-500 text-white p-1 rounded-full shadow-lg">
-                                    <CheckCircle2 className="w-5 h-5" />
+                        >
+                            <div className="h-40 bg-slate-100 relative">
+                                {v.image_url ? (
+                                    <img src={v.image_url} alt={v.name} className="w-full h-full object-cover" />
+                                ) : (
+                                    <div className="flex items-center justify-center h-full text-slate-400">
+                                        <Car className="w-12 h-12" />
+                                    </div>
+                                )}
+                                {selectedVehicle?.id === v.id && (
+                                    <div className="absolute top-2 right-2 bg-amber-500 text-white p-1 rounded-full shadow-lg">
+                                        <CheckCircle2 className="w-5 h-5" />
+                                    </div>
+                                )}
+                            </div>
+                            <div className="p-4 space-y-2">
+                                <h3 className="font-bold text-lg">{v.name}</h3>
+                                <p className="text-xs text-slate-500 line-clamp-2">{v.description}</p>
+                                <div className="flex justify-between items-center pt-2">
+                                    <span className="text-amber-600 font-black text-xl">{v.price_per_hour} <span className="text-sm">CHF / Std</span></span>
                                 </div>
-                            )}
-                        </div>
-                        <div className="p-4 space-y-2">
-                            <h3 className="font-bold text-lg">{v.name}</h3>
-                            <p className="text-xs text-slate-500 line-clamp-2">{v.description}</p>
-                            <div className="flex justify-between items-center pt-2">
-                                <span className="text-amber-600 font-black text-xl">{v.price_per_hour} <span className="text-sm">CHF / Std</span></span>
                             </div>
                         </div>
                     </div>

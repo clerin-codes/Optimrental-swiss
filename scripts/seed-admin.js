@@ -12,8 +12,8 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 async function seedAdmin() {
-    const email = 'admin@optimrental.local';
-    const password = 'Admin123!';
+    const email = 'admin@optimrental.ch';
+    const password = 'optimrental123@';
 
     console.log(`Attempting to create admin user: ${email}`);
 

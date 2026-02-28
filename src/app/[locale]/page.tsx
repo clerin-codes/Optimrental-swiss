@@ -179,9 +179,23 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
                     <p className="text-slate-500 max-w-2xl mx-auto font-medium text-lg pt-4">Select from our premium fleet of meticulously maintained vehicles.</p>
                 </div>
 
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {/**
+                 * Layout behavior:
+                 * - 1 vehicle: center it
+                 * - 2 vehicles: center the two items on larger screens
+                 * - 3+ vehicles: use the original 2/3 column grid
+                 * We keep the card size stable by wrapping each card with a max width.
+                 */}
+                <div className={(() => {
+                    if (!vehicles) return 'max-w-7xl mx-auto grid gap-10';
+                    if (vehicles.length === 1) return 'max-w-7xl mx-auto grid grid-cols-1 justify-items-center gap-10';
+                    if (vehicles.length === 2) return 'max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 justify-items-center gap-10';
+                    return 'max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10';
+                })()}>
                     {vehicles?.map((vehicle) => (
-                        <VehicleCard key={vehicle.id} vehicle={vehicle} />
+                        <div key={vehicle.id} className="w-full max-w-[380px]">
+                            <VehicleCard vehicle={vehicle} />
+                        </div>
                     ))}
                 </div>
 

@@ -20,9 +20,6 @@ Run the following command in your terminal:
 ```bash
 node scripts/seed-admin.js
 ```
-This will create an account:
-- **Email**: `admin@optimrental.local`
-- **Password**: `Admin123!`
 
 ## 4. Run Locally
 ```bash
