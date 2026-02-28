@@ -67,26 +67,7 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card className="rounded-3xl border-none shadow-xl p-8 bg-slate-900 text-white">
-                    <h3 className="text-xl font-bold mb-4">Quick Actions</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                        <button className="bg-white/10 hover:bg-white/20 p-6 rounded-2xl text-left transition-colors group">
-                            <div className="bg-amber-500 w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Car className="text-white" size={20} />
-                            </div>
-                            <div className="font-bold">Add New Car</div>
-                            <div className="text-xs text-slate-400">Expand your fleet</div>
-                        </button>
-                        <button className="bg-white/10 hover:bg-white/20 p-6 rounded-2xl text-left transition-colors group">
-                            <div className="bg-blue-500 w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <CalendarDays className="text-white" size={20} />
-                            </div>
-                            <div className="font-bold">Check Bookings</div>
-                            <div className="text-xs text-slate-400">View latest updates</div>
-                        </button>
-                    </div>
-                </Card>
-
+                {/* Quick Actions removed */}
                 {/* Business Health section removed */}
             </div>
         </div>
